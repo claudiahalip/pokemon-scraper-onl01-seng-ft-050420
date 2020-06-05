@@ -23,7 +23,7 @@ class Pokemon
       SELECT * FROM pokemon
       WHERE id = ?
       SQL
-    DB.execute(sql, id).flatten
+    DB.execute(sql, [id]).flatten
     Pokemon.new(id: id, name: DB.execute(sql, id).flatten[1], type: DB.execute(sql, id).flatten[2], db: db)
     
         
