@@ -14,7 +14,7 @@ class Pokemon
     INSERT INTO pokemon (name, type)
     VALUES (?, ?)
     SQL
-    DB[:conn].execute(sql, name, type)
+    DB.execute(sql, name, type)
     # @id = DB[:conn].execute("SELECT last_insert_rowid()FROM pokemon")[0][0]
   end 
   
@@ -23,8 +23,8 @@ class Pokemon
       SELECT * FROM pokemon
       WHERE id = ?
       SQL
-    DB[:conn].execute(sql, id).flatten
-    Pokemon.new(id: id, name: DB[:conn].execute(sql, id).flatten[1], type: DB[:conn].execute(sql, id).flatten[2], db: db)
+    DB.execute(sql, id).flatten
+    Pokemon.new(id: id, name: DB.execute(sql, id).flatten[1], type: DB.execute(sql, id).flatten[2], db: db)
     
         
   end
